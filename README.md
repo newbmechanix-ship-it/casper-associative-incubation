@@ -2,6 +2,8 @@
 
 ![CASPER Associative Incubation banner](assets/banner.png)
 
+The Papers are in "papers" folder.
+
 A research proposal and experimental harness design for giving a coding agent a voluntary background problem-incubation capability.
 
 The system is not a fixed personal daemon layout. It is a generic mechanism that can be installed into a user's own agent workspace, discover whatever knowledge compartments already exist there, and run only when the user explicitly assigns an unresolved problem.
