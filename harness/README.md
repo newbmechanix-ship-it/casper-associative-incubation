@@ -8,6 +8,7 @@ The intended harness should provide:
 init
 assign problem
 build requirement graph
+expand requirement branches
 discover compartments
 manual incubation run
 optional scheduled heartbeat
@@ -33,6 +34,9 @@ problem_intake.py
 requirement_graph.py
   decomposes problems into requirements and blocked branches
 
+branch_expander.py
+  expands blocked requirements into memory, public-channel, program, substitution, and lateral branches
+
 compartment_discovery.py
   discovers local knowledge compartments with user consent
 
@@ -48,6 +52,9 @@ association_expander.py
 mechanism_matcher.py
   maps chains to unsatisfied requirements
 
+memory_probe.py
+  searches enabled compartments for entities, affiliations, assets, skills, and relationships that may satisfy requirements
+
 bridge_scorer.py
   scores relevance, novelty, actionability, traceability, and risk
 
@@ -57,4 +64,3 @@ candidate_writer.py
 feedback.py
   captures user accept/reject/decay signals
 ```
-

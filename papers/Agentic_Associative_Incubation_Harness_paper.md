@@ -9,7 +9,7 @@
 
 ## Abstract
 
-This paper proposes an installable **Agentic Associative Incubation Harness** for coding agents such as Codex or Claude Code. The harness gives an agent an opt-in background problem-solving capability: when a user explicitly assigns an unresolved problem, the agent converts it into a requirement graph, discovers the user's local knowledge compartments, and performs budgeted incubation passes that search fresh context for lateral mechanism bridges.
+This paper proposes an installable **Agentic Associative Incubation Harness** for coding agents such as Codex or Claude Code. The harness gives an agent an opt-in background problem-solving capability: when a user explicitly assigns an unresolved problem, the agent converts it into a requirement graph, expands that graph into many possible solution branches, discovers the user's local knowledge compartments, and performs budgeted incubation passes that search memory and fresh context for lateral mechanism bridges.
 
 The mechanism is experimental and must not run as an unbounded background LLM loop. The default installation is manual and disabled until the user assigns a problem. Once assigned, the harness can periodically inspect enabled compartments such as notes, tasks, research files, project logs, issue trackers, or other user-approved sources. It extracts words and events, expands them through close lexical associations, infers mechanisms, and tests whether any mechanism can satisfy a blocked requirement.
 
@@ -18,9 +18,10 @@ The contribution is not generic task decomposition, memory, or random-word creat
 ```text
 voluntary problem assignment
   -> requirement graph
+  -> explosive branch expansion
   -> dynamic compartment discovery
   -> budgeted heartbeat pass
-  -> lateral association
+  -> memory probes / public probes / lateral association
   -> mechanism bridge
   -> inspectable candidate path
   -> user feedback
@@ -222,17 +223,115 @@ fix vehicle
 
 The graph is the filter. It prevents random association from becoming noise.
 
-## 8. Heartbeat Incubation Pass
+## 8. Explosive Requirement Branching
+
+The requirement graph is not a flat checklist. It is a root system.
+
+The root is the assigned problem:
+
+```text
+need to reach a target institution
+```
+
+The first expansion produces requirements:
+
+```text
+access
+credibility
+relevant person
+warm introduction
+official channel
+program fit
+public event
+application pathway
+```
+
+Each requirement can then branch into possible mechanisms:
+
+```text
+access
+  -> people the user knows
+  -> people known by people the user knows
+  -> public staff directory
+  -> department contact
+  -> event or seminar
+  -> alumni or professional network
+  -> innovation or inventor program
+  -> grant, fellowship, or open-call channel
+```
+
+This behavior can feel like roots expanding quickly into thousands of paths. The harness should support that expansion, but it must also prune aggressively. Branching is useful only when constrained by the root problem, user consent, source availability, cost, risk, and token budget.
+
+Branch expansion operators:
+
+```text
+requirement decomposition
+memory entity probe
+second-degree relationship probe
+affiliation probe
+public channel probe
+program/opportunity probe
+event/location probe
+cost-reduction probe
+substitution probe
+constraint bypass probe
+lateral analogy probe
+```
+
+The harness should surface only the strongest candidate paths, not the entire branch tree.
+
+## 9. Search Modes
+
+The harness has three complementary search modes.
+
+```text
+1. Context-driven bridge search
+   fresh daily signal -> association -> requirement match
+
+2. Requirement-driven memory probe
+   unsatisfied requirement -> memory entities -> possible satisfiers
+
+3. Passive cross-compartment sentry
+   one compartment signal -> possible effect in another compartment
+```
+
+The BBQ example is context-driven. A target-institution access example is requirement-driven.
+
+Requirement-driven memory probe:
+
+```text
+problem:
+  need a way to reach a target institution
+
+requirement:
+  access / credibility / warm introduction
+
+branch:
+  affiliated person
+
+memory probe:
+  people in local memory
+  -> public affiliations
+  -> institutional connection
+
+candidate bridge:
+  known person -> public affiliation -> advice/referral/channel -> target institution
+```
+
+This is not merely association from a random word. It is a directed search from an unsatisfied requirement into memory.
+
+## 10. Heartbeat Incubation Pass
 
 A heartbeat pass is a budgeted check.
 
 ```text
 load active assigned problems
 load requirement graphs
+expand or refresh candidate branches
 load enabled compartments
-sample changed context
+sample changed context and relevant memory
 extract seeds
-expand seeds into close associations
+probe memory entities, affiliations, public channels, and close associations
 infer mechanisms
 match mechanisms to unsatisfied requirements
 score candidate bridges
@@ -241,7 +340,7 @@ write candidate reports
 
 The pass can be manual or scheduled. Manual comes first.
 
-## 9. Lateral Mechanism Bridge
+## 11. Lateral Mechanism Bridge
 
 The harness searches for functional bridges, not topical matches.
 
@@ -271,7 +370,36 @@ BBQ is not about vehicles.
 BBQ contains a mechanism that may satisfy a repair requirement.
 ```
 
-## 10. Candidate Path Format
+## 12. Access Bridge Example
+
+The same mechanism can search for access rather than money.
+
+Example:
+
+```text
+assigned problem:
+  need a way to reach a target institution
+
+requirement:
+  access / credibility / warm introduction / official channel
+
+branch expansion:
+  affiliated person
+  public program
+  official department email
+  event or seminar
+  second-degree contact
+
+memory probe:
+  known people -> public affiliations -> institutional connection
+
+candidate path:
+  ask a known affiliated person for general advice or the correct public channel
+```
+
+The system should verify public facts before surfacing an affiliation bridge. It should also frame the path cautiously. A known person may be able to provide advice, but the harness must not pressure, exploit, or assume willingness.
+
+## 13. Candidate Path Format
 
 Every candidate must be inspectable.
 
@@ -304,7 +432,30 @@ Every candidate must be inspectable.
 }
 ```
 
-## 11. Feedback Loop
+Access candidate:
+
+```json
+{
+  "candidate_id": "bridge_access_001",
+  "problem_id": "problem_target_institution_001",
+  "source_signal": {
+    "compartment_id": "compartment_contacts",
+    "excerpt": "Known professional contact in local memory"
+  },
+  "branch_operator": "affiliation_probe",
+  "association_chain": [
+    "known professional contact",
+    "public institutional affiliation",
+    "possible advice or referral",
+    "target institution"
+  ],
+  "matched_requirement": "req_access",
+  "candidate_path": "If appropriate, ask the contact for general advice or the right public channel.",
+  "status": "needs_user_review"
+}
+```
+
+## 14. Feedback Loop
 
 The user can mark candidates:
 
@@ -319,7 +470,7 @@ needs_more_research
 
 Accepted bridges can be promoted. Rejected bridges decay. Unsafe classes can be blocked.
 
-## 12. Installation Model
+## 15. Installation Model
 
 The harness is designed to be installed by a coding agent.
 
@@ -343,12 +494,13 @@ Only run incubation after explicit user assignment.
 Do not create automatic LLM loops by default.
 Use local compartments only after consent.
 Decompose problems into requirement graphs.
-Search fresh context for mechanism bridges.
+Expand requirement branches under a budget.
+Search fresh context and memory for mechanism bridges.
 Surface candidate paths with source chains and risk scores.
 Never take external action without approval.
 ```
 
-## 13. Evaluation Plan
+## 16. Evaluation Plan
 
 Compare:
 
@@ -358,7 +510,8 @@ B. direct prompt plus task decomposition
 C. random-word association
 D. requirement graph only
 E. requirement graph plus compartment retrieval
-F. full heartbeat incubation with bridge scoring
+F. requirement graph plus branch expansion
+G. full heartbeat incubation with bridge scoring
 ```
 
 Metrics:
@@ -377,17 +530,20 @@ token cost
 The important comparisons:
 
 ```text
-F vs B:
+G vs B:
   does incubation beat decomposition?
 
-F vs C:
+G vs C:
   does requirement filtering beat random association?
 
-F token cost:
+G vs F:
+  does repeated context/memory probing improve over one-shot branch expansion?
+
+G token cost:
   can this run within an acceptable user budget?
 ```
 
-## 14. Safety Limits
+## 17. Safety Limits
 
 The harness may suggest but must not act.
 
@@ -405,16 +561,17 @@ make medical, legal, or financial conclusions
 
 The system should describe risk and uncertainty. Low-confidence paths are experiments, not recommendations.
 
-## 15. Conclusion
+## 18. Conclusion
 
 The Agentic Associative Incubation Harness proposes an opt-in capability for coding agents:
 
 ```text
 assigned problem
   -> requirement graph
+  -> branch expansion
   -> dynamic compartments
   -> budgeted heartbeat
-  -> lateral mechanism bridge
+  -> memory/public/lateral mechanism bridge
   -> inspectable candidate path
 ```
 
@@ -422,5 +579,4 @@ This turns an agent from a foreground-only responder into a controlled backgroun
 
 The research question is:
 
-> Can voluntary, budgeted background incubation over local knowledge compartments surface useful non-obvious solution paths that direct prompting and ordinary task decomposition miss?
-
+> Can voluntary, budgeted background incubation over local knowledge compartments and rapidly expanded requirement branches surface useful non-obvious solution paths that direct prompting and ordinary task decomposition miss?

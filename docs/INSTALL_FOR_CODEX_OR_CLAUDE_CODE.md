@@ -15,11 +15,12 @@ You are installing a local research harness that can:
 ```text
 1. accept an explicitly assigned unresolved problem;
 2. decompose it into a requirement graph;
-3. discover local knowledge compartments;
-4. run manual or budgeted heartbeat passes;
-5. extract fresh context;
-6. search for lateral mechanism bridges;
-7. write inspectable candidate paths for user review.
+3. expand requirements into candidate solution branches;
+4. discover local knowledge compartments;
+5. run manual or budgeted heartbeat passes;
+6. extract fresh context and relevant memory entities;
+7. search for lateral mechanism bridges;
+8. write inspectable candidate paths for user review.
 ```
 
 ## Where To Install
@@ -188,6 +189,28 @@ other
 
 Do not force personal categories or fixed daemon names.
 
+## Step 5a - Add Branch Expansion
+
+After the requirement graph exists, expand each unsatisfied requirement into candidate branch families.
+
+Branch operators:
+
+```text
+requirement decomposition
+memory entity probe
+second-degree relationship probe
+affiliation probe
+public channel probe
+program/opportunity probe
+event/location probe
+cost-reduction probe
+substitution probe
+constraint bypass probe
+lateral analogy probe
+```
+
+Keep the branch tree budgeted. Do not let the agent expand indefinitely.
+
 ## Step 6 - Implement Manual Run First
 
 Before scheduling anything, implement a manual run.
@@ -199,6 +222,7 @@ load active problem
 load enabled compartments
 sample fresh context
 extract seeds
+probe relevant memory entities
 expand associations
 map mechanisms
 match against unsatisfied requirements
@@ -268,4 +292,3 @@ Never take external action without explicit user approval.
 - [ ] Logs show when runs occurred and why.
 - [ ] User can pause or delete active problems.
 - [ ] No external action is taken automatically.
-

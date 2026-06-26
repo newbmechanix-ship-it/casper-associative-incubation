@@ -25,6 +25,8 @@ candidate reports per run: small
   "max_runs_per_problem_per_day": 2,
   "max_context_chars_per_run": 12000,
   "max_llm_calls_per_run": 3,
+  "max_branch_expansions_per_problem": 40,
+  "max_memory_entities_per_run": 50,
   "max_candidate_reports_per_run": 3,
   "pause_after_days_without_feedback": 7
 }
@@ -41,6 +43,8 @@ read changed files or records
 extract candidate terms
 filter by enabled compartments
 filter by active problem requirement types
+limit branch expansion count
+limit memory entity probes
 deduplicate seeds
 limit context size
 ```
@@ -116,4 +120,3 @@ opportunity cost
 ```
 
 Low-confidence bridges should be marked as experiments, not recommendations.
-

@@ -10,6 +10,8 @@ When installing it for a user:
 - discover the user's knowledge compartments dynamically;
 - ask before using sensitive compartments;
 - create requirement graphs for assigned problems;
+- expand blocked requirements into budgeted branch families;
+- probe enabled memory compartments for entities, affiliations, assets, skills, and relationships that may satisfy requirements;
 - surface only inspectable candidate paths;
 - never send messages, spend money, contact third parties, or change external systems without explicit user approval.
 
@@ -18,4 +20,3 @@ Read first:
 1. `docs/INSTALL_FOR_CODEX_OR_CLAUDE_CODE.md`
 2. `docs/AGENTIC_HARNESS_SPEC.md`
 3. `docs/TOKEN_AND_SAFETY_MODEL.md`
-

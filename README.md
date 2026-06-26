@@ -11,9 +11,10 @@ The system is not a fixed personal daemon layout. It is a generic mechanism that
 ```text
 user assigns unresolved problem
   -> agent builds a requirement graph
+  -> agent expands requirements into many possible solution branches
   -> agent discovers local knowledge compartments
-  -> heartbeat pass samples fresh context
-  -> lateral association finds possible bridges
+  -> heartbeat pass samples fresh context and memory
+  -> lateral association, memory probes, and public-channel probes find bridges
   -> candidate paths are surfaced for review
   -> user accepts, rejects, promotes, or decays them
 ```
@@ -32,6 +33,24 @@ Bridge:
 ```
 
 The bridge is not topical. BBQ is not about vehicle repair. The bridge is functional: a daily-context signal contains a mechanism that may satisfy an unsolved requirement.
+
+Second example:
+
+```text
+Problem:
+  Need a way to reach a target institution.
+
+Requirement:
+  access / credibility / warm introduction / official channel
+
+Memory probe:
+  known people -> affiliations -> possible institutional connection
+
+Bridge:
+  known person -> public affiliation -> advice/referral/channel -> target institution
+```
+
+This shows the other search direction. The system does not only wait for daily context to produce a clue. It can also start from an unsatisfied requirement and probe memory for entities, relationships, affiliations, public programs, official channels, and second-degree paths that might satisfy it.
 
 ## Repository Layout
 
@@ -52,7 +71,9 @@ harness/
 
 examples/
   assigned_problem.example.json
+  branch_expansion.example.json
   bridge_candidate.example.json
+  access_bridge_candidate.example.json
   compartments.example.json
 ```
 

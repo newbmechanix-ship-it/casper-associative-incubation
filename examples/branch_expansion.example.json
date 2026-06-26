@@ -1,0 +1,38 @@
+{
+  "problem_id": "problem_target_institution_001",
+  "plain_problem": "Find a legitimate way to reach a target institution about a project.",
+  "root_requirement": "reach target institution",
+  "branches": [
+    {
+      "id": "branch_access_known_people",
+      "requirement": "access",
+      "operator": "memory_entity_probe",
+      "query": "known people who may have relevant affiliation, experience, or advice"
+    },
+    {
+      "id": "branch_access_second_degree",
+      "requirement": "access",
+      "operator": "second_degree_relationship_probe",
+      "query": "people known by trusted contacts who may know the institution"
+    },
+    {
+      "id": "branch_public_channel",
+      "requirement": "official channel",
+      "operator": "public_channel_probe",
+      "query": "department email, public contact page, office hours, events, seminars"
+    },
+    {
+      "id": "branch_program_fit",
+      "requirement": "program fit",
+      "operator": "program_opportunity_probe",
+      "query": "inventor, innovation, entrepreneurship, research, or open-call programs"
+    }
+  ],
+  "pruning_rules": [
+    "source must be enabled or public",
+    "candidate must satisfy a requirement",
+    "candidate must be socially appropriate",
+    "candidate must stay within token budget",
+    "candidate must require user review before action"
+  ]
+}

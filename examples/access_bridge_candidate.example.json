@@ -1,0 +1,31 @@
+{
+  "candidate_id": "bridge_access_affiliation_001",
+  "problem_id": "problem_target_institution_001",
+  "created_at": "2026-06-26T00:00:00-04:00",
+  "source_signal": {
+    "compartment_id": "compartment_contacts",
+    "excerpt": "Known professional contact appears in local memory."
+  },
+  "branch_operator": "affiliation_probe",
+  "association_chain": [
+    "known professional contact",
+    "public institutional affiliation",
+    "possible advice or referral",
+    "target institution"
+  ],
+  "matched_requirement": {
+    "id": "req_access",
+    "type": "access",
+    "label": "find a legitimate contact path"
+  },
+  "candidate_path": "If appropriate, ask the contact for general advice or the correct public channel. Verify the affiliation before surfacing or acting.",
+  "scores": {
+    "relevance": 0.8,
+    "novelty": 0.74,
+    "mechanism_fit": 0.82,
+    "actionability": 0.48,
+    "traceability": 0.7,
+    "risk": 0.44
+  },
+  "status": "needs_user_review"
+}

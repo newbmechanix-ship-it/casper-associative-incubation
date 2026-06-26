@@ -50,9 +50,12 @@ assigned problem
   -> plain-language problem record
   -> CASCADE-style mechanism decode
   -> requirement graph
+  -> branch expansion
   -> local compartment discovery
   -> budgeted heartbeat passes
   -> fresh-context sampling
+  -> memory-entity probing
+  -> public-channel or affiliation probing when allowed
   -> seed extraction
   -> closest-association expansion
   -> mechanism bridge matching
@@ -172,6 +175,110 @@ Requirement node schema:
 
 The graph should be editable by the user.
 
+## Explosive Branch Expansion
+
+The harness should treat a problem as a root that can branch into many possible solution paths.
+
+Example:
+
+```text
+need to reach a target institution
+  -> access
+     -> known people
+     -> second-degree contacts
+     -> public staff directory
+     -> official email
+     -> events
+     -> programs
+     -> affiliated people
+  -> credibility
+     -> proposal
+     -> proof of work
+     -> collaborator
+     -> relevant project page
+  -> program fit
+     -> inventor program
+     -> innovation office
+     -> lab interest
+     -> open call
+```
+
+This can branch very quickly. The harness must prune by:
+
+```text
+relevance
+cost
+risk
+source availability
+user consent
+token budget
+expected actionability
+```
+
+Branch expansion operators:
+
+```text
+requirement decomposition
+memory entity probe
+second-degree relationship probe
+affiliation probe
+public channel probe
+program/opportunity probe
+event/location probe
+cost-reduction probe
+substitution probe
+constraint bypass probe
+lateral analogy probe
+```
+
+## Search Modes
+
+The harness has three search modes.
+
+### 1. Context-Driven Bridge Search
+
+Fresh context creates a seed.
+
+```text
+daily signal -> association chain -> requirement match
+```
+
+Example:
+
+```text
+BBQ -> prepared food -> paid service -> money -> vehicle repair
+```
+
+### 2. Requirement-Driven Memory Probe
+
+An unsatisfied requirement queries memory for possible satisfiers.
+
+```text
+requirement -> memory entities -> affiliations / skills / assets / relationships -> candidate path
+```
+
+Example:
+
+```text
+need access to target institution
+  -> branch: affiliated person
+  -> search known people
+  -> identify public affiliation
+  -> possible advice/referral/channel
+```
+
+### 3. Passive Cross-Compartment Sentry
+
+One compartment may imply risk or opportunity in another.
+
+```text
+financial pressure -> possible attention/wellbeing risk
+deadline pressure -> possible communication risk
+tool access issue -> schedule risk
+```
+
+The sentry should only flag possibilities for review.
+
 ## Fresh Context Sampling
 
 At each approved heartbeat, the harness samples enabled compartments since the last run.
@@ -195,7 +302,7 @@ opportunities
 mechanisms
 ```
 
-The harness is not searching only for exact problem words. It is searching for words and situations that could satisfy requirements.
+The harness is not searching only for exact problem words. It is searching for words, entities, relationships, affiliations, channels, and situations that could satisfy requirements.
 
 ## Closest-Association Expansion
 
@@ -234,6 +341,24 @@ usefulness bridge:
 ```
 
 If the bridge does not improve a requirement node, it should not be surfaced.
+
+## Memory Probe Test
+
+A memory-derived candidate must pass additional checks.
+
+```text
+consent:
+  is this compartment enabled for incubation?
+
+verification:
+  if the bridge depends on public affiliation or public programs, can it be verified before surfacing?
+
+appropriateness:
+  would contacting or using this relationship be socially appropriate?
+
+action boundary:
+  is this only a suggestion for user review, not an automatic outreach?
+```
 
 ## Candidate Output
 
@@ -355,4 +480,3 @@ autonomous assistant
 medical/financial advisor
 token-unbounded daemon
 ```
-
