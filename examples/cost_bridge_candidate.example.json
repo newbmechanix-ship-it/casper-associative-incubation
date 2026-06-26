@@ -1,0 +1,31 @@
+{
+  "candidate_id": "bridge_cost_thumbnail_cache_001",
+  "problem_id": "problem_hosting_cost_001",
+  "created_at": "2026-06-26T00:00:00-04:00",
+  "source_signal": {
+    "compartment_id": "compartment_logs",
+    "excerpt": "Repeated thumbnail generation appears in recent processing logs."
+  },
+  "branch_operator": "cost_reduction_probe",
+  "association_chain": [
+    "repeated thumbnail generation",
+    "wasted compute",
+    "cache generated thumbnails",
+    "lower recurring cost"
+  ],
+  "matched_requirement": {
+    "id": "req_lower_cost",
+    "type": "cost",
+    "label": "lower recurring cost while preserving reliability"
+  },
+  "candidate_path": "Evaluate caching generated thumbnails and moving original files to cheaper storage.",
+  "scores": {
+    "relevance": 0.86,
+    "novelty": 0.62,
+    "mechanism_fit": 0.88,
+    "actionability": 0.77,
+    "traceability": 0.9,
+    "risk": 0.31
+  },
+  "status": "needs_user_review"
+}

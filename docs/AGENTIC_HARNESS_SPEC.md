@@ -55,7 +55,7 @@ assigned problem
   -> budgeted heartbeat passes
   -> fresh-context sampling
   -> memory-entity probing
-  -> public-channel or affiliation probing when allowed
+  -> resource, pattern, channel, and opportunity probing
   -> seed extraction
   -> closest-association expansion
   -> mechanism bridge matching
@@ -182,25 +182,23 @@ The harness should treat a problem as a root that can branch into many possible 
 Example:
 
 ```text
-need to reach a target institution
-  -> access
-     -> known people
-     -> second-degree contacts
-     -> public staff directory
-     -> official email
-     -> events
-     -> programs
-     -> affiliated people
-  -> credibility
-     -> proposal
-     -> proof of work
-     -> collaborator
-     -> relevant project page
-  -> program fit
-     -> inventor program
-     -> innovation office
-     -> lab interest
-     -> open call
+reduce cloud hosting cost without hurting reliability
+  -> usage reduction
+     -> remove idle resources
+     -> reduce repeated work
+     -> compress heavy assets
+  -> caching
+     -> cache generated thumbnails
+     -> cache API responses
+     -> cache build artifacts
+  -> storage strategy
+     -> move cold data
+     -> deduplicate uploaded files
+     -> reduce egress
+  -> pricing
+     -> reserved capacity
+     -> credits
+     -> cheaper tier
 ```
 
 This can branch very quickly. The harness must prune by:
@@ -260,11 +258,11 @@ requirement -> memory entities -> affiliations / skills / assets / relationships
 Example:
 
 ```text
-need access to target institution
-  -> branch: affiliated person
-  -> search known people
-  -> identify public affiliation
-  -> possible advice/referral/channel
+need lower hosting cost without reliability loss
+  -> branch: caching
+  -> search logs, docs, and billing notes
+  -> identify repeated thumbnail generation
+  -> possible cache or storage-tiering path
 ```
 
 ### 3. Passive Cross-Compartment Sentry
@@ -302,7 +300,7 @@ opportunities
 mechanisms
 ```
 
-The harness is not searching only for exact problem words. It is searching for words, entities, relationships, affiliations, channels, and situations that could satisfy requirements.
+The harness is not searching only for exact problem words. It is searching for words, entities, relationships, affiliations, channels, assets, files, logs, patterns, and situations that could satisfy requirements.
 
 ## Closest-Association Expansion
 
@@ -342,22 +340,25 @@ usefulness bridge:
 
 If the bridge does not improve a requirement node, it should not be surfaced.
 
-## Memory Probe Test
+## Memory Probe Record
 
-A memory-derived candidate must pass additional checks.
+A memory-derived candidate should preserve the branch that produced it.
 
 ```text
-consent:
-  is this compartment enabled for incubation?
+source compartment:
+  where did the clue come from?
 
-verification:
-  if the bridge depends on public affiliation or public programs, can it be verified before surfacing?
+branch operator:
+  which expansion operator produced the candidate?
 
-appropriateness:
-  would contacting or using this relationship be socially appropriate?
+functional mechanism:
+  what mechanism connects the clue to the requirement?
 
-action boundary:
-  is this only a suggestion for user review, not an automatic outreach?
+matched requirement:
+  which unsatisfied branch does it satisfy?
+
+candidate path:
+  what action or experiment follows?
 ```
 
 ## Candidate Output

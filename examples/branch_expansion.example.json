@@ -1,37 +1,36 @@
 {
-  "problem_id": "problem_target_institution_001",
-  "plain_problem": "Find a legitimate way to reach a target institution about a project.",
-  "root_requirement": "reach target institution",
+  "problem_id": "problem_hosting_cost_001",
+  "plain_problem": "Reduce cloud hosting cost without hurting reliability.",
+  "root_requirement": "lower recurring cost while preserving uptime and performance",
   "branches": [
     {
-      "id": "branch_access_known_people",
-      "requirement": "access",
-      "operator": "memory_entity_probe",
-      "query": "known people who may have relevant affiliation, experience, or advice"
+      "id": "branch_cache_repeated_work",
+      "requirement": "lower recurring cost",
+      "operator": "cost_reduction_probe",
+      "query": "logs, docs, and code paths that show repeated expensive work"
     },
     {
-      "id": "branch_access_second_degree",
-      "requirement": "access",
-      "operator": "second_degree_relationship_probe",
-      "query": "people known by trusted contacts who may know the institution"
+      "id": "branch_storage_tiering",
+      "requirement": "lower storage cost",
+      "operator": "substitution_probe",
+      "query": "large files, cold data, duplicate uploads, and storage class options"
     },
     {
-      "id": "branch_public_channel",
-      "requirement": "official channel",
-      "operator": "public_channel_probe",
-      "query": "department email, public contact page, office hours, events, seminars"
+      "id": "branch_idle_resource_cleanup",
+      "requirement": "remove waste",
+      "operator": "constraint_bypass_probe",
+      "query": "idle resources, unused services, stale deployments, and scheduled shutdown opportunities"
     },
     {
-      "id": "branch_program_fit",
-      "requirement": "program fit",
+      "id": "branch_pricing_change",
+      "requirement": "lower recurring cost",
       "operator": "program_opportunity_probe",
-      "query": "inventor, innovation, entrepreneurship, research, or open-call programs"
+      "query": "credits, committed-use discounts, cheaper tiers, and pricing model changes"
     }
   ],
   "pruning_rules": [
     "source must be enabled or public",
     "candidate must satisfy a requirement",
-    "candidate must be socially appropriate",
     "candidate must stay within token budget",
     "candidate must require user review before action"
   ]

@@ -38,19 +38,26 @@ Second example:
 
 ```text
 Problem:
-  Need a way to reach a target institution.
+  Reduce cloud hosting cost without hurting reliability.
 
 Requirement:
-  access / credibility / warm introduction / official channel
+  lower recurring cost while preserving uptime and performance
 
-Memory probe:
-  known people -> affiliations -> possible institutional connection
+Agent-generated branches:
+  usage reduction
+  caching
+  storage tiering
+  scheduled workloads
+  idle resource cleanup
+  pricing or credits
+  architecture change
+  dependency replacement
 
 Bridge:
-  known person -> public affiliation -> advice/referral/channel -> target institution
+  repeated thumbnail generation -> wasted compute -> caching branch -> lower cost
 ```
 
-This shows the other search direction. The system does not only wait for daily context to produce a clue. It can also start from an unsatisfied requirement and probe memory for entities, relationships, affiliations, public programs, official channels, and second-degree paths that might satisfy it.
+This shows the other search direction. The system does not only wait for daily context to produce a clue. It can also start from an unsatisfied requirement, generate branch families, and probe memory for files, logs, entities, tools, assets, patterns, channels, and prior events that might satisfy it.
 
 ## Repository Layout
 
@@ -73,7 +80,7 @@ examples/
   assigned_problem.example.json
   branch_expansion.example.json
   bridge_candidate.example.json
-  access_bridge_candidate.example.json
+  cost_bridge_candidate.example.json
   compartments.example.json
 ```
 

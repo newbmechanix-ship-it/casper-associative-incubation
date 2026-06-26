@@ -230,34 +230,34 @@ The requirement graph is not a flat checklist. It is a root system.
 The root is the assigned problem:
 
 ```text
-need to reach a target institution
+reduce cloud hosting cost without hurting reliability
 ```
 
 The first expansion produces requirements:
 
 ```text
-access
-credibility
-relevant person
-warm introduction
-official channel
-program fit
-public event
-application pathway
+lower recurring cost
+preserve uptime
+preserve performance
+identify cost drivers
+reduce repeated work
+reduce storage cost
+reduce egress
+avoid risky architecture changes
 ```
 
 Each requirement can then branch into possible mechanisms:
 
 ```text
-access
-  -> people the user knows
-  -> people known by people the user knows
-  -> public staff directory
-  -> department contact
-  -> event or seminar
-  -> alumni or professional network
-  -> innovation or inventor program
-  -> grant, fellowship, or open-call channel
+lower recurring cost
+  -> remove idle resources
+  -> cache repeated work
+  -> compress stored assets
+  -> move cold data
+  -> reduce egress
+  -> change pricing tier
+  -> request credits
+  -> replace expensive dependency
 ```
 
 This behavior can feel like roots expanding quickly into thousands of paths. The harness should support that expansion, but it must also prune aggressively. Branching is useful only when constrained by the root problem, user consent, source availability, cost, risk, and token budget.
@@ -295,27 +295,27 @@ The harness has three complementary search modes.
    one compartment signal -> possible effect in another compartment
 ```
 
-The BBQ example is context-driven. A target-institution access example is requirement-driven.
+The BBQ example is context-driven. A cloud-cost example is requirement-driven.
 
 Requirement-driven memory probe:
 
 ```text
 problem:
-  need a way to reach a target institution
+  reduce cloud hosting cost without hurting reliability
 
 requirement:
-  access / credibility / warm introduction
+  lower recurring cost while preserving uptime and performance
 
 branch:
-  affiliated person
+  caching / storage tiering / idle cleanup
 
 memory probe:
-  people in local memory
-  -> public affiliations
-  -> institutional connection
+  logs, docs, billing notes, and code references
+  -> repeated thumbnail generation
+  -> compute and storage cost pattern
 
 candidate bridge:
-  known person -> public affiliation -> advice/referral/channel -> target institution
+  repeated thumbnail generation -> wasted compute -> caching branch -> lower cost
 ```
 
 This is not merely association from a random word. It is a directed search from an unsatisfied requirement into memory.
@@ -331,7 +331,7 @@ expand or refresh candidate branches
 load enabled compartments
 sample changed context and relevant memory
 extract seeds
-probe memory entities, affiliations, public channels, and close associations
+probe memory entities, assets, files, logs, channels, and close associations
 infer mechanisms
 match mechanisms to unsatisfied requirements
 score candidate bridges
@@ -370,34 +370,36 @@ BBQ is not about vehicles.
 BBQ contains a mechanism that may satisfy a repair requirement.
 ```
 
-## 12. Access Bridge Example
+## 12. Cost Reduction Branch Example
 
-The same mechanism can search for access rather than money.
+The same mechanism can search for technical cost paths rather than money-generation paths.
 
 Example:
 
 ```text
 assigned problem:
-  need a way to reach a target institution
+  reduce hosting cost without reducing reliability
 
 requirement:
-  access / credibility / warm introduction / official channel
+  lower recurring cost while preserving uptime and performance
 
 branch expansion:
-  affiliated person
-  public program
-  official department email
-  event or seminar
-  second-degree contact
+  cache repeated work
+  reduce storage
+  move cold data
+  remove idle resources
+  change pricing model
 
 memory probe:
-  known people -> public affiliations -> institutional connection
+  logs mention repeated thumbnail generation
+  billing notes mention compute/storage increase
+  code references image processing
 
 candidate path:
-  ask a known affiliated person for general advice or the correct public channel
+  cache generated thumbnails and move originals to cold storage
 ```
 
-The system should verify public facts before surfacing an affiliation bridge. It should also frame the path cautiously. A known person may be able to provide advice, but the harness must not pressure, exploit, or assume willingness.
+The point is not that the branch list is predefined. The agent builds the branch tree from the problem, probes memory for clues, prunes weak branches, and surfaces only candidate paths that can state their functional mechanism.
 
 ## 13. Candidate Path Format
 
@@ -432,25 +434,25 @@ Every candidate must be inspectable.
 }
 ```
 
-Access candidate:
+Cost candidate:
 
 ```json
 {
-  "candidate_id": "bridge_access_001",
-  "problem_id": "problem_target_institution_001",
+  "candidate_id": "bridge_cost_001",
+  "problem_id": "problem_hosting_cost_001",
   "source_signal": {
-    "compartment_id": "compartment_contacts",
-    "excerpt": "Known professional contact in local memory"
+    "compartment_id": "compartment_logs",
+    "excerpt": "Repeated thumbnail generation appears in recent processing logs."
   },
-  "branch_operator": "affiliation_probe",
+  "branch_operator": "cost_reduction_probe",
   "association_chain": [
-    "known professional contact",
-    "public institutional affiliation",
-    "possible advice or referral",
-    "target institution"
+    "repeated thumbnail generation",
+    "wasted compute",
+    "cache generated thumbnails",
+    "lower recurring cost"
   ],
-  "matched_requirement": "req_access",
-  "candidate_path": "If appropriate, ask the contact for general advice or the right public channel.",
+  "matched_requirement": "req_lower_cost",
+  "candidate_path": "Evaluate caching generated thumbnails and moving originals to cheaper storage.",
   "status": "needs_user_review"
 }
 ```
