@@ -1,0 +1,11 @@
+.associative-incubation/runs/
+.associative-incubation/candidates/
+.associative-incubation/feedback/
+.associative-incubation/logs/
+*.local.json
+*.secret
+*.env
+__pycache__/
+.DS_Store
+Thumbs.db
+

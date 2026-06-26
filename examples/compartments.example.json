@@ -1,0 +1,29 @@
+{
+  "compartments": [
+    {
+      "id": "compartment_notes",
+      "label": "Notes",
+      "path_or_source": "notes/",
+      "data_types": ["note", "journal", "idea"],
+      "enabled_for_incubation": true,
+      "sensitive": false
+    },
+    {
+      "id": "compartment_tasks",
+      "label": "Tasks",
+      "path_or_source": "tasks/",
+      "data_types": ["task", "deadline", "blocker"],
+      "enabled_for_incubation": true,
+      "sensitive": false
+    },
+    {
+      "id": "compartment_private_records",
+      "label": "Private Records",
+      "path_or_source": "private/",
+      "data_types": ["personal", "financial", "health"],
+      "enabled_for_incubation": false,
+      "sensitive": true
+    }
+  ]
+}
+

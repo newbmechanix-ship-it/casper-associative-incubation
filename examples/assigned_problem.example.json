@@ -1,0 +1,57 @@
+{
+  "problem_id": "problem_vehicle_repair_001",
+  "created_at": "2026-06-26T00:00:00-04:00",
+  "plain_problem": "I need to fix my vehicle, but I may not have enough money, tools, or repair knowledge.",
+  "status": "active",
+  "budget": {
+    "max_runs_per_day": 2,
+    "max_candidate_reports_per_run": 3
+  },
+  "mechanism_decode": {
+    "object": "vehicle",
+    "current_state": "broken or unreliable",
+    "desired_state": "usable",
+    "possible_mechanisms": ["diagnose", "repair", "restore", "replace", "outsource", "workaround"]
+  },
+  "requirement_graph": {
+    "nodes": [
+      {
+        "id": "req_knowledge",
+        "type": "knowledge",
+        "label": "diagnose the issue",
+        "status": "unsatisfied"
+      },
+      {
+        "id": "req_tools",
+        "type": "tool",
+        "label": "obtain tools",
+        "status": "unknown"
+      },
+      {
+        "id": "req_parts",
+        "type": "part",
+        "label": "obtain parts",
+        "status": "unknown"
+      },
+      {
+        "id": "req_money",
+        "type": "money",
+        "label": "fund the repair",
+        "status": "unsatisfied"
+      }
+    ],
+    "edges": [
+      {
+        "from": "req_money",
+        "to": "req_parts",
+        "relation": "may be needed to satisfy"
+      },
+      {
+        "from": "req_money",
+        "to": "req_service",
+        "relation": "may be needed to outsource"
+      }
+    ]
+  }
+}
+
